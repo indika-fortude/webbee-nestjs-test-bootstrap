@@ -85,12 +85,11 @@ export class MenuItemsService {
     ]
   */
   async getMenuItems() {
-    const result = await this.menuItemRepository
+    return this.menuItemRepository
       .createQueryBuilder('menuItem')
       .innerJoinAndSelect('menuItem.children', 'children')
       .leftJoinAndSelect('children.children', 'child2')
       .where('menuItem.parentId IS NULL')
       .getMany();
-    return result;
   }
 }
