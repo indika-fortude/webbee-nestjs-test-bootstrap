@@ -1,5 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Event } from './event.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Workshop {
@@ -7,10 +6,10 @@ export class Workshop {
   id: number;
 
   @Column({ type: 'datetime' })
-  start: string;
+  start: Date;
 
   @Column({ type: 'datetime' })
-  end: string;
+  end: Date;
 
   @Column({ type: 'integer', default: null })
   eventId: number;
@@ -19,5 +18,5 @@ export class Workshop {
   name: string;
 
   @Column({ type: 'datetime' })
-  createdAt: string;
+  createdAt: Date;
 }

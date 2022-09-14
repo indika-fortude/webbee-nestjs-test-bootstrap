@@ -16,13 +16,13 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       database: 'database.db',
       entities: [__dirname + '/../entities/*.entity.{js,ts}'],
       migrations: [__dirname + '/../database/migrations/*{.ts,.js}'],
-      //   cli: {
-      //     migrationsDir: __dirname + '/../database/migrations',
-      //   },
+      // cli: {
+      //   migrationsDir: __dirname + '/../database/migrations',
+      // },
       migrationsTableName: 'migrations',
-      //   extra: {
-      //     charset: 'utf8mb4_unicode_ci',
-      //   },
+      // extra: {
+      //   charset: 'utf8mb4_unicode_ci',
+      // },
       synchronize: false,
       logging: true,
       autoLoadEntities: true,
