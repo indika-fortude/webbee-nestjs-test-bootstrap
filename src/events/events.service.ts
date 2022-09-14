@@ -92,9 +92,15 @@ export class EventsService {
 
   @Get('events')
   async getEventsWithWorkshops() {
-    return this.eventRepository.find({
+    const result = await this.eventRepository.find({
       relations: ['workshops'],
+      order: {
+        workshops: {
+          id: 'ASC',
+        },
+      },
     });
+    return result;
   }
 
   /*
