@@ -88,7 +88,7 @@ export class MenuItemsService {
     const result = await this.menuItemRepository
       .createQueryBuilder('menuItem')
       .innerJoinAndSelect('menuItem.children', 'children')
-      .leftJoinAndSelect('children.parent', 'parent')
+      .leftJoinAndSelect('children.children', 'child2')
       .where('menuItem.parentId IS NULL')
       .getMany();
     return result;
