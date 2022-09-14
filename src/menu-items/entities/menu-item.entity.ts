@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class MenuItem {
@@ -16,4 +23,11 @@ export class MenuItem {
 
   @Column({ type: 'datetime' })
   createdAt: string;
+
+  @ManyToOne(() => MenuItem, (child) => child.children)
+  @JoinColumn({ name: 'parentId' })
+  parent: MenuItem;
+
+  @OneToMany(() => MenuItem, (parent) => parent.parent)
+  children: MenuItem[];
 }

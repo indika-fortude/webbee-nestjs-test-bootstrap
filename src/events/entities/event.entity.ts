@@ -2,7 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Workshop } from './workshop.entity';
@@ -18,10 +18,6 @@ export class Event {
   @Column({ type: 'datetime' })
   createdAt: Date;
 
-  @ManyToMany(() => Workshop, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-  })
-  @JoinColumn()
+  @OneToMany(() => Workshop, (workshop) => workshop.event)
   workshops: Workshop[];
 }

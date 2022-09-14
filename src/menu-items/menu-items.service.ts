@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { MenuItem } from './entities/menu-item.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Equal, Repository } from 'typeorm';
 
 @Injectable()
 export class MenuItemsService {
@@ -84,6 +84,10 @@ export class MenuItemsService {
     ]
   */
   async getMenuItems() {
-    throw new Error('TODO in task 3');
+    return this.menuItemRepository
+      .createQueryBuilder('menuItem')
+      .innerJoinAndSelect('menuItem.children', 'children')
+      .where('menuItem.parentId = 0')
+      .getMany();
   }
 }
